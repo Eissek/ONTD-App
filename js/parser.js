@@ -1,45 +1,59 @@
-/**
+/*
    raspberry-coke/ontd/js/parser.js
    Parses ONTDs XML file and gets hold of details including title, users, post etc
-**/
+*/
 
 var ontd = ontd || {};
 ontd.parser = ontd.parser || {};
+// ontd.parser.rada = ontd.parser.rada || {};
+// ontd.parser.invokeReadyState = ontd.parser.invokeReadyState || {};
+
 (function () {
   //  var parser = new DOMParser();
     var xhr = new XMLHttpRequest();
     var url = "http://ohnotheydidnt.livejournal.com/data/atom";
-
-    xhr.onreadystatechange = function () {
-	console.log("in parser");
-	if (xhr.readyState == 4){
-	    console.log("ready state");
-	    if ((xhr.status >= 4 && xhr.status < 300) || xhr.status == 304) {
-		console.log(xhr.responseXML);
-		return ontd.parser.stripData(xhr.responseXML);
-	    } else {
-		console.log("xhr error");
-	    }
-	} else {
-	    console.log("xhr not ready");
-	}
-	return false;
-    };
-    xhr.open("get", url, true);
-    xhr.send(null);
     
+    // Variables to hold ontd post data
+    var entry = "";
+    var noEntries = "";
+    var feed = "";
+    var title = "";
+    var author = "";
+    var date = "";
+    var tags = ""; //category
+    var content = "";
+
+    ontd.parser.rada = function () {
+	console.log("mwememem");
+    };
+
+    ontd.parser.invokeReadyState = function () {
+
+	xhr.onreadystatechange = function () {
+	    console.log("in parser");
+	    if (xhr.readyState == 4){
+		console.log("ready state");
+		if ((xhr.status >= 4 && xhr.status < 300) || xhr.status == 304) {
+		    console.log(xhr.responseXML);
+		    return ontd.parser.stripData(xhr.responseXML);
+		} else {
+		    console.log("xhr error");
+		}
+	    } else {
+		console.log("xhr not ready");
+	    }
+	    return false;
+	};
+	xhr.open("get", url, true);
+	xhr.send(null);
+    };
+    
+    // extracts data from given xml
     ontd.parser.stripData = function(data) {
 	var parser = new DOMParser();
 	var xml = parser.parseFromString(data, "text/html");
 	var result = data.evaluate("/", data.documentElement, resolver, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
 
-	var entry = "";
-	var feed = "";
-	var title = "";
-	var author = "";
-	var date = "";
-	var tags = ""; //category
-	var content = "";
 	
 	if (result != null) {
 	    var element = result.iterateNext();
@@ -47,7 +61,8 @@ ontd.parser = ontd.parser || {};
 		console.log("here " + element.getElementsByTagName("feed")[0].nodeName);
 		feed = element.getElementsByTagName("feed")[0];
 		entry = feed.getElementsByTagName("entry");
-		console.log("Number of Entries " + entry.length);
+		noEntries = entry.length;
+		console.log("Number of Entries " + noEntries);		
 		element = result.iterateNext();
 	    }
 	   
@@ -63,10 +78,11 @@ ontd.parser = ontd.parser || {};
 			+ "\n Poster: " + author[0].getElementsByTagName("name")[0].firstChild.nodeValue
 			+ "\n Date: " + entry[i].getElementsByTagName("published")[0].firstChild.nodeValue
 		       );
+	    
 	    console.log("\n Tags: " + tags.length);
-	    for (var j = 0; j<tags.length;j++) {
+	   /* for (var j = 0; j<tags.length;j++) {
 		console.log(tags[j].getAttributeNode("term").nodeValue);
-	    }
+	    } */
 	}
     };
     var resolver = function (prefix) {
@@ -75,6 +91,13 @@ ontd.parser = ontd.parser || {};
 		default: return "http://www.w3.org/2005/Atom";
 	}
     };
-});
+
+    // getter for number of entries
+    ontd.parser.getNoEntries = function () {
+	return noEntries;
+    };
+
+    
+})();
 
 
