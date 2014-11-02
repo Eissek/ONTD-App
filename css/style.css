@@ -1,0 +1,46 @@
+.html, body {
+    height: 100%;
+}
+
+.app-android .app-topbar .app-title  {
+    font-size:30px;
+    text-align:center;
+    font-family:"Roboto",sans-serif;
+    /* padding:0; */
+    float:none;
+    clear:both;
+    /* margin-right: auto; */
+    /* margin-left: auto; */
+    /* line-height:0; */
+}
+
+.app-android .app-topbar {
+    background-color: #7C578C;
+    height:55px;
+    /* padding:0; */
+    /* margin:0; */
+    /* text-align:center; */
+}
+
+.app-android .app-page {
+    background-color: #7C578C;
+}
+.main-content {
+    background-color: red;
+    /* min-height: 100%; */
+   min-height: 50%;
+    margin: 10px;
+}
+#content {
+   min- height:100%;
+}
+
+.app-content {
+    height:100%;
+    /* background-color: #7C578C; */
+    /* margin-bottom:65px; */
+}
+.app-section {
+    height:89%;
+    /* padding-bottom:66px; */
+}
