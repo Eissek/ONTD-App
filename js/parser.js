@@ -57,10 +57,12 @@ ontd.parser = ontd.parser || {};
 	
 	if (result != null) {
 	    var element = result.iterateNext();
+
+	    // Begins parsing ontd xml feed data and retrieves each entry
 	    while(element) {
 		console.log("here " + element.getElementsByTagName("feed")[0].nodeName);
 		feed = element.getElementsByTagName("feed")[0];
-		entry = feed.getElementsByTagName("entry");
+		entry = feed.getElementsByTagName("entry"); // retrieved data is held in variable
 		noEntries = entry.length;
 		console.log("Number of Entries " + noEntries);		
 		element = result.iterateNext();
@@ -68,6 +70,7 @@ ontd.parser = ontd.parser || {};
 	   
 	}
 
+	// Loops through each entry element and extracts data
 	for (var i = 0; i < entry.length; i++) {
 	    title = entry[i].getElementsByTagName("title");
 	    author = entry[i].getElementsByTagName("author");
