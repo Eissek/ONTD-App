@@ -18,7 +18,7 @@ var modelPage = ontd.models.Page;
 	   // console.log("Generate entries: " + ontd.parser.getNoEntries());
 	},
 	render: function () {
-	    ontd.parser.invokeReadyState();
+	   ontd.parser.invokeReadyState(ontd.parser.stripData);
 
 	    return (
 		// <ontd.views.Heading />

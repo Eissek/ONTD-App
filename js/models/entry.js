@@ -17,6 +17,7 @@ ontd.Model = ontd.Model || {};
 	this.noComments = ""; // number of Comments
 	this.read = false; // Has the post been read before
 	this.observers = []; // Required for observer pattern
+	//return console.log(this.title + " Added");
     };
 
     ontd.Model.entry.prototype.getPost = function () {

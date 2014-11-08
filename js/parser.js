@@ -22,12 +22,13 @@ ontd.parser = ontd.parser || {};
     var date = "";
     var tags = ""; //category
     var content = "";
-
+    var entries = [];
+    
     ontd.parser.rada = function () {
 	console.log("mwememem");
     };
 
-    ontd.parser.invokeReadyState = function () {
+    ontd.parser.invokeReadyState = function (callback) {
 
 	xhr.onreadystatechange = function () {
 	    console.log("in parser");
@@ -35,7 +36,7 @@ ontd.parser = ontd.parser || {};
 		console.log("ready state");
 		if ((xhr.status >= 4 && xhr.status < 300) || xhr.status == 304) {
 		    console.log(xhr.responseXML);
-		    return ontd.parser.stripData(xhr.responseXML);
+		    return callback(xhr.responseXML);
 		} else {
 		    console.log("xhr error");
 		}
@@ -72,22 +73,37 @@ ontd.parser = ontd.parser || {};
 
 	// Loops through each entry element and extracts data
 	for (var i = 0; i < entry.length; i++) {
-	    title = entry[i].getElementsByTagName("title");
-	    author = entry[i].getElementsByTagName("author");
+	    title = entry[i].getElementsByTagName("title")[0].firstChild.nodeValue;
+	    author = entry[i].getElementsByTagName("author")[0].getElementsByTagName("name")[0].firstChild.nodeValue;
 	    tags = entry[i].getElementsByTagName("category");
 	    content = entry[i].getElementsByTagName("content")[0].firstChild.nodeValue;
-
-	    console.log("\n Title: " +  title[0].firstChild.nodeValue
+	    date = entry[i].getElementsByTagName("published")[0].firstChild.nodeValue;
+	    
+	  /*  console.log("\n Title: " +  title[0].firstChild.nodeValue
 			+ "\n Poster: " + author[0].getElementsByTagName("name")[0].firstChild.nodeValue
 			+ "\n Date: " + entry[i].getElementsByTagName("published")[0].firstChild.nodeValue
 		       );
 	    
-	    console.log("\n Tags: " + tags.length);
+	    console.log("\n Tags: " + tags.length); */
+
+	    entries[i] = new ontd.Model.entry(title, author, date, tags, content);
 	   /* for (var j = 0; j<tags.length;j++) {
 		console.log(tags[j].getAttributeNode("term").nodeValue);
 	    } */
 	}
+
+	for (var i = 0; i < entries.length; i++) {
+	    console.log(entries[i].title + "\n" + entries[i].poster + "\n"
+			+ entries[i].date + "\n"
+			/*+ tags.getAttributeNode("term").nodeValue*/);
+	    
+	}
     };
+
+    ontd.parser.parseEntry = function(entryData) {
+
+    };
+    
     var resolver = function (prefix) {
 	switch(prefix) {
 		case "lj": return "http://www.livejournal.com";
