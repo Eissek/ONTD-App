@@ -28,27 +28,33 @@ ontd.parser = ontd.parser || {};
 	console.log("mwememem");
     };
 
+/*
     ontd.parser.invokeReadyState = function (callback) {
 
 	xhr.onreadystatechange = function () {
 	    console.log("in parser");
 	    if (xhr.readyState == 4){
 		console.log("ready state");
-		if ((xhr.status >= 4 && xhr.status < 300) || xhr.status == 304) {
+		if (xhr.status == 200) {
 		    console.log(xhr.responseXML);
-		    return callback(xhr.responseXML);
+		    //removed return
+		    console.log(callback(xhr.responseXML) + " invoked");
+
 		} else {
 		    console.log("xhr error");
 		}
 	    } else {
 		console.log("xhr not ready");
 	    }
-	    return false;
+	    // return false;
 	};
 	xhr.open("get", url, true);
 	xhr.send(null);
-    };
-    
+	// console.log("nothing to send");
+	return "yaaaaheh";
+
+    }; 
+  */  
     // extracts data from given xml
     ontd.parser.stripData = function(data) {
 	var parser = new DOMParser();
@@ -68,10 +74,20 @@ ontd.parser = ontd.parser || {};
 		console.log("Number of Entries " + noEntries);		
 		element = result.iterateNext();
 	    }
-	   
-	}
 
-	// Loops through each entry element and extracts data
+	    ontd.parser.parseEntry(entry);
+	    var tes = "there are entries shsssssssssss " + entries.length;
+	    if (entries.length > 0)
+		return entries[0].title + " hey";
+	}
+	
+	return false;
+
+    };
+
+    // Loops through each entry element and extracts data
+    ontd.parser.parseEntry = function(entryData) {
+
 	for (var i = 0; i < entry.length; i++) {
 	    title = entry[i].getElementsByTagName("title")[0].firstChild.nodeValue;
 	    author = entry[i].getElementsByTagName("author")[0].getElementsByTagName("name")[0].firstChild.nodeValue;
@@ -79,17 +95,17 @@ ontd.parser = ontd.parser || {};
 	    content = entry[i].getElementsByTagName("content")[0].firstChild.nodeValue;
 	    date = entry[i].getElementsByTagName("published")[0].firstChild.nodeValue;
 	    
-	  /*  console.log("\n Title: " +  title[0].firstChild.nodeValue
-			+ "\n Poster: " + author[0].getElementsByTagName("name")[0].firstChild.nodeValue
-			+ "\n Date: " + entry[i].getElementsByTagName("published")[0].firstChild.nodeValue
-		       );
-	    
-	    console.log("\n Tags: " + tags.length); */
+	    /*  console.log("\n Title: " +  title[0].firstChild.nodeValue
+		+ "\n Poster: " + author[0].getElementsByTagName("name")[0].firstChild.nodeValue
+		+ "\n Date: " + entry[i].getElementsByTagName("published")[0].firstChild.nodeValue
+		);
+		
+		console.log("\n Tags: " + tags.length); */
 
 	    entries[i] = new ontd.Model.entry(title, author, date, tags, content);
-	   /* for (var j = 0; j<tags.length;j++) {
-		console.log(tags[j].getAttributeNode("term").nodeValue);
-	    } */
+	    /* for (var j = 0; j<tags.length;j++) {
+	       console.log(tags[j].getAttributeNode("term").nodeValue);
+	       } */
 	}
 
 	for (var i = 0; i < entries.length; i++) {
@@ -98,10 +114,8 @@ ontd.parser = ontd.parser || {};
 			/*+ tags.getAttributeNode("term").nodeValue*/);
 	    
 	}
-    };
-
-    ontd.parser.parseEntry = function(entryData) {
-
+	// return "hwehewhehehehelllll";
+	
     };
     
     var resolver = function (prefix) {
