@@ -35,8 +35,6 @@ var modelPage = ontd.models.Page;
 		if (xhr.readyState == 4) {
 		    console.log("read state");
 		    if (xhr.status == 200) {
-			// console.log(xhr.responseXML);
-			// ontd.views.home.setData(callback(xhr.responseXML));
 			var test = ontd.parser.stripData(xhr.responseXML);
 			callback(test);
 		    } else {
@@ -54,22 +52,12 @@ var modelPage = ontd.models.Page;
 	    
 	},
 	componentDidMount: function() {
-	    // setInterval(this.loadEntries, 1400000000000);
-
-	   // console.log(data);
-	    // this.setState({data: "Arnold"});
-	    // this.setState({data: "Hey"});
-	    // this.setState({data: "Ge"});
-	    var save = "testing";
-	
-	    // this.invokeReadyState(ontd.parser.stripData);
 	    this.invokeReadyState(this.setData);
 	   // console.log(tt);
 	},
 	
 	render: function () {
 	    console.log(this.state.data);
-
 	    return (
 
 		// <ontd.views.Heading />
