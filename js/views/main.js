@@ -73,7 +73,7 @@ var modelPage = ontd.models.Page;
 
 React.renderComponent(
 	<ontd.views.home />,
-    document.getElementById('content')
+    document.getElementById('container')
 	
 );
 
