@@ -23,6 +23,7 @@ ontd.parser = ontd.parser || {};
     var tags = ""; //category
     var content = "";
     var entries = [];
+    var id = '';
     
     ontd.parser.rada = function () {
 	console.log("mwememem");
@@ -78,7 +79,8 @@ ontd.parser = ontd.parser || {};
 	    ontd.parser.parseEntry(entry);
 	    var tes = "there are entries shsssssssssss " + entries.length;
 	    if (entries.length > 0)
-		return entries[0].title + " hey";
+		return entries; 
+		// return entries[0].title + " hey";
 	}
 	
 	return false;
@@ -87,8 +89,12 @@ ontd.parser = ontd.parser || {};
 
     // Loops through each entry element and extracts data
     ontd.parser.parseEntry = function(entryData) {
-
+	// var pattern = /(?:(ohnotheydidnt:))?([0-9]+)$/g;
 	for (var i = 0; i < entry.length; i++) {
+	    id = entry[i].getElementsByTagName("id")[0].firstChild.nodeValue;
+	    id = id.split(":").pop();
+	    // id.split("");
+	    
 	    title = entry[i].getElementsByTagName("title")[0].firstChild.nodeValue;
 	    author = entry[i].getElementsByTagName("author")[0].getElementsByTagName("name")[0].firstChild.nodeValue;
 	    tags = entry[i].getElementsByTagName("category");
@@ -102,7 +108,7 @@ ontd.parser = ontd.parser || {};
 		
 		console.log("\n Tags: " + tags.length); */
 
-	    entries[i] = new ontd.Model.entry(title, author, date, tags, content);
+	    entries[i] = new ontd.Model.entry(title, author, date, tags, content, id);
 	    /* for (var j = 0; j<tags.length;j++) {
 	       console.log(tags[j].getAttributeNode("term").nodeValue);
 	       } */
@@ -111,6 +117,7 @@ ontd.parser = ontd.parser || {};
 	for (var i = 0; i < entries.length; i++) {
 	    console.log(entries[i].title + "\n" + entries[i].poster + "\n"
 			+ entries[i].date + "\n"
+			+ entries[i].id
 			/*+ tags.getAttributeNode("term").nodeValue*/);
 	    
 	}

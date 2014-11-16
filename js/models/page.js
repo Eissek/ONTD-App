@@ -12,7 +12,7 @@ ontd.models = ontd.models || {};
     ontd.models.Page = React.createClass({
 	render: function () {
 	    return (
-		<div id="page">
+		    <div id="page" className="app-page" data-page={this.props.pageName}>
 		   <ontd.components.Header />
 		    <ontd.components.Content />
 		</div>

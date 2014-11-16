@@ -20,11 +20,11 @@ var modelPage = ontd.models.Page;
 	   // ontd.parser.
 	    // console.log("Generate entries: " + ontd.parser.getNoEntries());
 	},
-	loadEntries: function () {
-	      var myData = ontd.parser.invokeReadyState(ontd.parser.stripData);
-	},
 	getInitialState: function () {
 	    return {data: []};
+	},
+	entryList: function () {
+	    // render
 	},
 	setData: function (theData) {
 	    this.setState({data: theData});
@@ -37,6 +37,7 @@ var modelPage = ontd.models.Page;
 		    if (xhr.status == 200) {
 			var test = ontd.parser.stripData(xhr.responseXML);
 			callback(test);
+			// console.log(test[0].title);
 		    } else {
 			console.log("xhr error");
 		    }
@@ -51,18 +52,42 @@ var modelPage = ontd.models.Page;
 	    // console.log("nothing to send");
 	    
 	},
+	componentWillMount: function () {
+	    console.log("boom");
+
+	},
 	componentDidMount: function() {
 	    this.invokeReadyState(this.setData);
-	   // console.log(tt);
+	    // console.log(tt);
+	    App.load('home');
+
 	},
 	
 	render: function () {
+	    // this.generatePages();
 	    console.log(this.state.data);
+	    var myTest = this.state.data.map( function(entry) {
+	    	// console.log(entry.title);
+	    	return (
+	    		<ontd.models.Page pageName={entry.id} />
+	    	)
+	    });
+	   /* {this.state.data.map(function(entry) {
+			return <ontd.models.Page pageName={entry.id} />
+		    })}*/
 	    return (
+		<div>
+		    <div className="app-page" data-page="home">
+		    <div className="app-topbar"></div>
+		    <div className="app-content"><h1>HIII</h1>
+		    <div className="app-button" data-target="myPage">Click here</div>
+		</div>
+		    </div>
 
-		// <ontd.views.Heading />
-		<ontd.models.Page />
-		    
+		    <div className="app-page" data-page="myPage">
+		    TEst
+		</div>
+		   </div>
 	    );
 	}
     });

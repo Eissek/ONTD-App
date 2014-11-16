@@ -24,6 +24,7 @@
 
 .app-android .app-page {
     background-color: #7C578C;
+    
 }
 .main-content {
     background-color: red;
@@ -51,4 +52,7 @@
 .app-section {
     height:89%;
     /* padding-bottom:66px; */
+}
+.reactDiv {
+    height:100%;
 }
