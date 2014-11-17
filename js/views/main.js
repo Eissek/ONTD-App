@@ -76,18 +76,12 @@ var modelPage = ontd.models.Page;
 			return <ontd.models.Page pageName={entry.id} />
 		    })}*/
 	    return (
-		<div>
-		    <div className="app-page" data-page="home">
-		    <div className="app-topbar"></div>
-		    <div className="app-content"><h1>HIII</h1>
-		    <div className="app-button" data-target="myPage">Click here</div>
-		</div>
-		    </div>
+	 <div>
+		    <ontd.models.Page pageName="home" pageTarget="myPage"/>
 
-		    <div className="app-page" data-page="myPage">
-		    TEst
-		</div>
-		   </div>
+		    <ontd.models.Page pageName="myPage" pageTarget="home"/>
+		    
+	</div>
 	    );
 	}
     });

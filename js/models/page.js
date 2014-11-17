@@ -14,7 +14,8 @@ ontd.models = ontd.models || {};
 	    return (
 		    <div id="page" className="app-page" data-page={this.props.pageName}>
 		   <ontd.components.Header />
-		    <ontd.components.Content />
+		    <ontd.components.Content pageTarget={this.props.pageTarget} />
+		    
 		</div>
 	    );
 	}

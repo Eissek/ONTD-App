@@ -13,7 +13,8 @@ ontd.components = ontd.components || {};
 		// changed from main-content
 		    <div className="app-content"> 
 		    <div className="app-section">
-		   test
+		    test
+		    <div className="app-button" data-target={this.props.pageTarget}>Click here</div>
 		</div>
 		</div>
 	    );
