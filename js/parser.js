@@ -92,7 +92,7 @@ ontd.parser = ontd.parser || {};
 	// var pattern = /(?:(ohnotheydidnt:))?([0-9]+)$/g;
 	for (var i = 0; i < entry.length; i++) {
 	    id = entry[i].getElementsByTagName("id")[0].firstChild.nodeValue;
-	    id = id.split(":").pop();
+	    id = id.split(":").pop(); // Gets last part of id and removes the rest
 	    // id.split("");
 	    
 	    title = entry[i].getElementsByTagName("title")[0].firstChild.nodeValue;
@@ -108,6 +108,7 @@ ontd.parser = ontd.parser || {};
 		
 		console.log("\n Tags: " + tags.length); */
 
+	    // Each new entry saved as entry model type and added to the entries array
 	    entries[i] = new ontd.Model.entry(title, author, date, tags, content, id);
 	    /* for (var j = 0; j<tags.length;j++) {
 	       console.log(tags[j].getAttributeNode("term").nodeValue);

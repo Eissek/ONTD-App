@@ -14,6 +14,7 @@ ontd.components = ontd.components || {};
 		    <div className="app-content"> 
 		    <div className="app-section">
 		    test
+		    <h2>{this.props.pageTitle}</h2>
 		    <div className="app-button" data-target={this.props.pageTarget}>Click here</div>
 		</div>
 		</div>
