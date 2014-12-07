@@ -29,7 +29,7 @@ ontd.parser = ontd.parser || {};
 	console.log("mwememem");
     };
 
-/*
+
     ontd.parser.invokeReadyState = function (callback) {
 
 	xhr.onreadystatechange = function () {
@@ -39,7 +39,9 @@ ontd.parser = ontd.parser || {};
 		if (xhr.status == 200) {
 		    console.log(xhr.responseXML);
 		    //removed return
-		    console.log(callback(xhr.responseXML) + " invoked");
+		    // console.log(callback(xhr.responseXML) + " invoked");
+		    var data = ontd.parser.stripData(xhr.responseXML);
+		    callback(data);
 
 		} else {
 		    console.log("xhr error");
@@ -52,10 +54,10 @@ ontd.parser = ontd.parser || {};
 	xhr.open("get", url, true);
 	xhr.send(null);
 	// console.log("nothing to send");
-	return "yaaaaheh";
+	// return "yaaaaheh";
 
     }; 
-  */  
+    
     // extracts data from given xml
     ontd.parser.stripData = function(data) {
 	var parser = new DOMParser();
