@@ -20,16 +20,12 @@ ontd.parser = ontd.parser || {};
     var title = "";
     var author = "";
     var date = "";
-    var tags = ""; //category
+    // var tags = ""; //category
     var content = "";
     var entries = [];
     var id = '';
+    var nextId = ""; // id for next page/entry
     
-    ontd.parser.rada = function () {
-	console.log("mwememem");
-    };
-
-
     ontd.parser.invokeReadyState = function (callback) {
 
 	xhr.onreadystatechange = function () {
@@ -91,7 +87,12 @@ ontd.parser = ontd.parser || {};
 
     // Loops through each entry element and extracts data
     ontd.parser.parseEntry = function(entryData) {
+	/**** MAY NEED TO CHANGE entry to entryData because right now using the global entry, instead of the one passed to the function *****/
+	
 	// var pattern = /(?:(ohnotheydidnt:))?([0-9]+)$/g;
+	
+	var tagAttribute = ""; // Will hold array of tag attributes
+	
 	for (var i = 0; i < entry.length; i++) {
 	    id = entry[i].getElementsByTagName("id")[0].firstChild.nodeValue;
 	    id = id.split(":").pop(); // Gets last part of id and removes the rest
@@ -99,24 +100,31 @@ ontd.parser = ontd.parser || {};
 	    
 	    title = entry[i].getElementsByTagName("title")[0].firstChild.nodeValue;
 	    author = entry[i].getElementsByTagName("author")[0].getElementsByTagName("name")[0].firstChild.nodeValue;
-	    tags = entry[i].getElementsByTagName("category");
+	    tagAttribute = entry[i].getElementsByTagName("category");
 	    content = entry[i].getElementsByTagName("content")[0].firstChild.nodeValue;
 	    date = entry[i].getElementsByTagName("published")[0].firstChild.nodeValue;
 	    
-	    /*  console.log("\n Title: " +  title[0].firstChild.nodeValue
-		+ "\n Poster: " + author[0].getElementsByTagName("name")[0].firstChild.nodeValue
-		+ "\n Date: " + entry[i].getElementsByTagName("published")[0].firstChild.nodeValue
-		);
-		
-		console.log("\n Tags: " + tags.length); */
+	    var tags = ""; // Tags usually returns an array of tags
+	    for (var j = 0; j<tagAttribute.length;j++) {
+		tags += tagAttribute[j].getAttributeNode("term").nodeValue;
+	    }
 
+	    // PEFORM A CHECK TO SEE WETHER ENTRY IS IN ARCHIVE OR NOT
+	    // IF IT IS THEN DISREGARD IT
+	    
 	    // Each new entry saved as entry model type and added to the entries array
-	    entries[i] = new ontd.Model.entry(title, author, date, tags, content, id);
-	    /* for (var j = 0; j<tags.length;j++) {
-	       console.log(tags[j].getAttributeNode("term").nodeValue);
-	       } */
-	}
+	    entries[i] = new ontd.Model.entry(title, author, date, tags, content, id, nextId);
 
+	    /*var nextEntry = i + 1;
+	    var n = entry[i + 1];
+	    if ( i != lastEntry) {
+		// console.log("Current id: " + i + " Next id: " + nextEntry);
+		// console.log("this id: " + id + " next id " + entry[i].id);
+	    } */
+
+	}
+	ontd.parser.addNextId(entries);
+	
 	for (var i = 0; i < entries.length; i++) {
 	    console.log(entries[i].title + "\n" + entries[i].poster + "\n"
 			+ entries[i].date + "\n"
@@ -126,6 +134,25 @@ ontd.parser = ontd.parser || {};
 	}
 	// return "hwehewhehehehelllll";
 	
+    };
+
+    ontd.parser.addNextId = function(data) {
+	var lastEntry = data.length - 1;
+	for (var i = 0; i < data.length; i++) {
+	    entries[i].title += " TEST";
+		
+	    if (i == 0)
+		entries[i].id = "home";
+	    
+	    if (i != lastEntry) {
+		entries[i].nextId = entries[i+1].id;
+
+	    // if (i == lastEntry) {
+	    } else {
+		entries[i].nextId = "home"; // Maybe perform check of archive here.
+	    // console.log("this id " + entries[i].id + "next id: " + entries[i].nextId);
+	    }
+	}
     };
     
     var resolver = function (prefix) {
