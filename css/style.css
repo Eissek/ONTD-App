@@ -1,9 +1,19 @@
 .html, body {
     height: 100%;
+    font-family:"Roboto",sans-serif;
 }
-
+#container {
+    /* height:100%; */
+}
+.app-android .app-topbar {
+    background-color: #7C578C;
+    /* height:1em; */
+    /* padding:0; */
+    /* margin:0; */
+    /* text-align:center; */
+}
 .app-android .app-topbar .app-title  {
-    font-size:30px;
+    font-size:2em;
     text-align:center;
     font-family:"Roboto",sans-serif;
     /* padding:0; */
@@ -14,45 +24,37 @@
     /* line-height:0; */
 }
 
-.app-android .app-topbar {
-    background-color: #7C578C;
-    height:55px;
-    /* padding:0; */
-    /* margin:0; */
-    /* text-align:center; */
-}
-
 .app-android .app-page {
     background-color: #7C578C;
     
 }
-.main-content {
-    background-color: red;
-    /* min-height: 100%; */
-   min-height: 50%;
-    margin: 10px;
-}
-
-#container {
-    height:100%;
-}
-#page {
-    height:100%;
-    
-}
-#content {
-   height:100%;
-}
 
 .app-content {
-   height:94%;
+   /* height:94%; */
     /* background-color: #7C578C; */
-    /* margin-bottom:65px; */
+/* margin-bottom:65px; */
+   
 }
 .app-section {
-    height:89%;
-    /* padding-bottom:66px; */
+    /* height:89%; */
+/* padding-bottom:66px; */
+    height:92%;
 }
-.reactDiv {
-    height:100%;
+
+.main {
+    /* height:23em; */
+    height:87%;
+    min-height:2%;
+    overflow:hidden;
+}
+.app-section .main .entry-content {
+    overflow: hidden;
+    color: red;
+/* max-height: 314px; */
+    max-height:50%;
+}
+.app-section .main .app-button {
+    position: relative;
+    bottom:0px;
+    margin-top:5px;
 }

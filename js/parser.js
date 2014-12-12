@@ -106,7 +106,7 @@ ontd.parser = ontd.parser || {};
 	    
 	    var tags = ""; // Tags usually returns an array of tags
 	    for (var j = 0; j<tagAttribute.length;j++) {
-		tags += tagAttribute[j].getAttributeNode("term").nodeValue;
+		tags += " " + tagAttribute[j].getAttributeNode("term").nodeValue;
 	    }
 
 	    // PEFORM A CHECK TO SEE WETHER ENTRY IS IN ARCHIVE OR NOT
@@ -114,13 +114,6 @@ ontd.parser = ontd.parser || {};
 	    
 	    // Each new entry saved as entry model type and added to the entries array
 	    entries[i] = new ontd.Model.entry(title, author, date, tags, content, id, nextId);
-
-	    /*var nextEntry = i + 1;
-	    var n = entry[i + 1];
-	    if ( i != lastEntry) {
-		// console.log("Current id: " + i + " Next id: " + nextEntry);
-		// console.log("this id: " + id + " next id " + entry[i].id);
-	    } */
 
 	}
 	ontd.parser.addNextId(entries);
@@ -132,25 +125,22 @@ ontd.parser = ontd.parser || {};
 			/*+ tags.getAttributeNode("term").nodeValue*/);
 	    
 	}
-	// return "hwehewhehehehelllll";
+	
 	
     };
 
     ontd.parser.addNextId = function(data) {
 	var lastEntry = data.length - 1;
 	for (var i = 0; i < data.length; i++) {
-	    entries[i].title += " TEST";
+	    // entries[i].title += " TEST";
 		
 	    if (i == 0)
 		entries[i].id = "home";
 	    
 	    if (i != lastEntry) {
 		entries[i].nextId = entries[i+1].id;
-
-	    // if (i == lastEntry) {
 	    } else {
 		entries[i].nextId = "home"; // Maybe perform check of archive here.
-	    // console.log("this id " + entries[i].id + "next id: " + entries[i].nextId);
 	    }
 	}
     };

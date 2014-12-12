@@ -8,14 +8,14 @@ ontd.views.home = ontd.views.home || {};
 
     ontd.views.home.setData = function(data) {
 	var theData = data;
-	console.log(theData);
-	console.log(theData[0]);
+	// console.log(theData);
+	// console.log(theData[0]);
 	console.log("First title " + theData[0].title);
-	console.log(theData[0].tags);
+	// console.log(theData[0].tags);
 	var templateScript = $('#myPage').html();
 	var template = Handlebars.compile(templateScript);
-	// $('#container').append(template(theData));
-	document.getElementById('container').innerHTML = template(theData);
+	$('#container').append(template(theData));
+	// document.getElementById('container').innerHTML = template(theData);
 	App.load("home");
 	// COULD ALSO HAVE A CHECK ARCHIVE FUNCTION AFTER THE LIVE DATA
 	// HAS BEEN RETRIEVED
@@ -41,11 +41,7 @@ ontd.views.home = ontd.views.home || {};
     // 	    console.log("SHOOOOOOW ITTTTT");
     // 	});
     // });
-    // var enData = new ontd.Model.entry("MAIN TITLE", "poster", "", "", "Content", "home", "one");
-    // var tScript = $('#myPage').html();
-    // var tem = Handlebars.compile(tScript);
-    // $(document.body).append(tem(enData));
-    // console.log("COMPELTED" + enData.title);
+   
 })();
 
 

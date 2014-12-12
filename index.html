@@ -6,26 +6,25 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <!-- <meta name="viewport" content="inital-scale=1"> -->
     <link rel="stylesheet" href="css/app.min.css">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/style.css">
   
   </head>
 
-  <!-- <body class="app-android"> -->
-  <body>
+  <body class="app-android">
+  <!-- <body> -->
     <div id="container">
-      BOOOOOOO
-      <div id="content" class="app-page" data-page="home">
-      	<!-- <div id="content"> -->
-	<div class="app-button" data-target="one">
-	  next</div>
-      </div>
+      <!-- <div id="content" class="app-page" data-page="home"> -->
+      <!-- 	<\!-- <div id="content"> -\-> -->
+      <!-- 	<div class="app-button" data-target="one"> -->
+      <!-- 	  next</div> -->
+      <!-- </div> -->
 
       
-      <div id="content" class="app-page" data-page="92892825">
-      	<!-- <div id="content"> -->
-	<div class="app-button" data-target="home">
-	  next</div>
-      </div>
+      <!-- <div id="content" class="app-page" data-page="92892825"> -->
+      <!-- 	<\!-- <div id="content"> -\-> -->
+      <!-- 	<div class="app-button" data-target="home"> -->
+      <!-- 	  next</div> -->
+      <!-- </div> -->
     </div>
     
       <div id="testDiv"></div>
@@ -39,16 +38,20 @@
 	    </div>
 	  </div>
 	  <div class="app-content">
+	    <div class="app-section">
+	      <div class="main">
+		<h2>{{title}}</h2>
+		<div class="entry-content"> {{content}}</div>
+		{{poster}}<br>
+		{{date}}<br>
+		{{tags}}<br>
+	      </div>
 
-	    {{poster}}<br>
-	    {{date}}<br>
-	    {{title}}<br>
-	    {{tags}}<br>
-	    <br>
-	    <br>
-	    <div class="app-button" data-target="{{nextId}}">
-	      Next
+	      <div class="app-button" data-target="{{nextId}}">
+		Next
+	      </div>
 	    </div>
+
 	  </div>
 	</div>
 	{{/each}}
