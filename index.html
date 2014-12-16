@@ -12,7 +12,7 @@
 
   <body class="app-android">
   <!-- <body> -->
-    <div id="container">
+  <div id="container">
       <!-- <div id="content" class="app-page" data-page="home"> -->
       <!-- 	<\!-- <div id="content"> -\-> -->
       <!-- 	<div class="app-button" data-target="one"> -->
@@ -31,15 +31,15 @@
 
       <script id="myPage" type="text/x-handlebars-template">
 	{{#each this}}
-	<div class="app-page" data-page="{{id}}">
-	  <div class="app-topbar">
+	<div id="ontd-page" class="app-page" data-page="{{id}}" data-next="{{nextId}}">
+	  <div id="ee" class="app-topbar">
 	    <div class="app-title">
 	      ONTD
 	    </div>
 	  </div>
 	  <div class="app-content">
 	    <div class="app-section">
-	      <div class="main">
+	      <div  class="main">
 		<h2>{{title}}</h2>
 		<div class="entry-content"> {{content}}</div>
 		{{poster}}<br>
@@ -47,7 +47,7 @@
 		{{tags}}<br>
 	      </div>
 
-	      <div class="app-button" data-target="{{nextId}}">
+	      <div id="page-area" class="app-button" data-target="{{nextId}}">
 		Next
 	      </div>
 	    </div>
@@ -74,6 +74,7 @@
     <script src="js/models/entry.js"></script>
     <!-- <script type="text/jsx" src="js/components/header.js"></script> -->
     <!-- <script type="text/jsx" src="js/views/main.js"></script> -->
+    <script src="js/controllers/touch-events.js"></script>
     <script src="js/views/home.js"></script>
    
   </body>
