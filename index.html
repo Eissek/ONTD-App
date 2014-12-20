@@ -31,7 +31,7 @@
 
       <script id="myPage" type="text/x-handlebars-template">
 	{{#each this}}
-	<div id="ontd-page" class="app-page" data-page="{{id}}" data-next="{{nextId}}">
+	<div id="ontd-page" class="app-page" data-page="{{id}}" data-next="{{nextId}}" data-prev="{{prevId}}">
 	  <div id="ee" class="app-topbar">
 	    <div class="app-title">
 	      ONTD
@@ -41,15 +41,16 @@
 	    <div class="app-section">
 	      <div  class="main">
 		<h2>{{title}}</h2>
-		<div class="entry-content"> {{content}}</div>
+		<div class="entry-content"> {{{content}}}</div>
 		{{poster}}<br>
 		{{date}}<br>
 		{{tags}}<br>
+		Page URL
 	      </div>
 
-	      <div id="page-area" class="app-button" data-target="{{nextId}}">
-		Next
-	      </div>
+	      <!-- <div id="page-area" class="app-button" data-target="{{nextId}}"> -->
+	      <!-- 	Next -->
+	      <!-- </div> -->
 	    </div>
 
 	  </div>

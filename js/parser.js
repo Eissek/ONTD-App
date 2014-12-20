@@ -134,13 +134,15 @@ ontd.parser = ontd.parser || {};
 	for (var i = 0; i < data.length; i++) {
 	    // entries[i].title += " TEST";
 		
-	    if (i == 0)
-		entries[i].id = "home";
-	    
+	    if (i == 0) entries[i].id = "home";
+
 	    if (i != lastEntry) {
 		entries[i].nextId = entries[i+1].id;
-	    } else {
+		if (i != 0) entries[i].prevId = entries[i-1].id;
+	    } else  {
 		entries[i].nextId = "home"; // Maybe perform check of archive here.
+		entries[i].prevId = entries[i-1].id;
+		// console.log("previous" + entries[i-1].id);
 	    }
 	}
     };

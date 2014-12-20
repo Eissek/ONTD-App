@@ -23,9 +23,9 @@ ontd.controllers = ontd.controllers || {};
 	App.load(page);
     };
 
-    ontd.controllers.previousPage = function (page) {
-	App.load(page);
-    };
+    // ontd.controllers.previousPage = function (page) {
+    // 	App.load(page);
+    // };
 
     page.addEventListener("touchstart", function (e) {
 	var touchObj = e.changedTouches[0];
@@ -47,11 +47,17 @@ ontd.controllers = ontd.controllers || {};
 
 	if (elapsedTime <= allowedTime && distance >= downThreshold && Math.abs(touchObj.pageX - startX) <= 100) {
 	    console.log("down");
+	    var domRef = document.getElementById("ontd-page").getAttribute("data-prev");
+
+	    if (domRef)
+		App.load(domRef);
+		
 	} else if (elapsedTime <= allowedTime && distance <= upThreshold && Math.abs(touchObj.pageX - startX) <=100) {
 	    console.log("up and next");
 	    // ontd.controllers.nextPage
-	    // App.load(document.getElementById("ontd-page").getAttribute("data-next"));
-	    ontd.controllers.nextPage(document.getElementById("ontd-page").getAttribute("data-next"));
+	    App.load(document.getElementById("ontd-page").getAttribute("data-next"));
+	    // ontd.controllers.nextPage(document.getElementById("ontd-page").getAttribute("data-next"));
+	    
 	}
     }, false);
     

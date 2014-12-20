@@ -1,5 +1,6 @@
 .html, body {
     height: 100%;
+    width: 100%;
     font-family:"Roboto",sans-serif;
 }
 #container {
@@ -30,33 +31,42 @@
 }
 
 .app-content {
-   /* height:94%; */
+  height:92%;
     /* background-color: #7C578C; */
 /* margin-bottom:65px; */
    
 }
 .app-section {
-    /* height:89%; */
+    height:83%;
 /* padding-bottom:66px; */
-    height:92%;
+    /* max-height:94%; */
+    /* height:28em; */
+    /* margin-bottom:1em; */
+    padding:20px;
 
 }
 
 .main {
     /* height:23em; */
     height:87%;
-    min-height:2%;
+    /* min-height:2%; */
     overflow:hidden;
 }
-.app-section .main .entry-content {
+ app-section .main .entry-content {
     overflow: hidden;
     color: red;
-/* max-height: 314px; */
+     /* max-height: 314px; */
     max-height:50%;
-}
+ }
+
+ .entry-content * img, img {
+     max-width:90%;
+     height: auto;
+ }
+ 
 .app-section .main .app-button {
-    position: relative;
-    bottom:0px;
-    margin-top:5px;
+    /* position: relative; */
+    /* bottom:0px; */
+    /* margin-top:5px; */
 
 }
