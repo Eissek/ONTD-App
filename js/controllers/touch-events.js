@@ -50,12 +50,12 @@ ontd.controllers = ontd.controllers || {};
 	    var domRef = document.getElementById("ontd-page").getAttribute("data-prev");
 
 	    if (domRef)
-		App.load(domRef);
+		App.load(domRef, 'slide-down');
 		
 	} else if (elapsedTime <= allowedTime && distance <= upThreshold && Math.abs(touchObj.pageX - startX) <=100) {
 	    console.log("up and next");
 	    // ontd.controllers.nextPage
-	    App.load(document.getElementById("ontd-page").getAttribute("data-next"));
+	    App.load(document.getElementById("ontd-page").getAttribute("data-next"), 'slide-up');
 	    // ontd.controllers.nextPage(document.getElementById("ontd-page").getAttribute("data-next"));
 	    
 	}

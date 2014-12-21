@@ -1,10 +1,18 @@
 .html, body {
     height: 100%;
     width: 100%;
-    font-family:"Roboto",sans-serif;
+    
+}
+@font-face {
+    font-family: 'MyWebFont';
+    src: url('../fonts/roboto/Roboto-Regular.ttf') format('truetype');
+    
 }
 #container {
     /* height:100%; */
+}
+.app-android {
+    font-family: MyWebFont,sans-serif;
 }
 .app-android .app-topbar {
     background-color: #7C578C;
@@ -16,7 +24,7 @@
 .app-android .app-topbar .app-title  {
     font-size:2em;
     text-align:center;
-    font-family:"Roboto",sans-serif;
+    /* font-family:"Roboto",sans-serif; */
     /* padding:0; */
     float:none;
     clear:both;

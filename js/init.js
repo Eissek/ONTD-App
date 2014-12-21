@@ -7,3 +7,4 @@
 	// }
 
 // App.load('home');
+// App.setDefaultTransition('slide-up');
