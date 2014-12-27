@@ -16,22 +16,76 @@
 }
 .app-android .app-topbar {
     background-color: #7C578C;
-    /* height:1em; */
+    height:61px;
+    text-align:center;
     /* padding:0; */
     /* margin:0; */
     /* text-align:center; */
+    /* display:block; */
+    padding:0px;
+    position:relative;
+    width:100%;
+    margin-left:0px;
+    padding-left:0px;
 }
 .app-android .app-topbar .app-title  {
     font-size:2em;
-    text-align:center;
     /* font-family:"Roboto",sans-serif; */
     /* padding:0; */
-    float:none;
-    clear:both;
+    /* float:none; */
+    /* clear:both; */
+    /* vertical-align:middle; */
     /* margin-right: auto; */
     /* margin-left: auto; */
-    /* line-height:0; */
+/* line-height:0; */
+    position:absolute;
+    left:35%;
 }
+
+.user-avatar {
+    Background-color:#fff;
+    width:3em;
+    height:3em;
+    display:inline-block;
+    /* float:left; */
+/* margin-top:2%; */
+    position: absolute;
+    left:1.5em;
+    top:10%;
+    /* margin-left:7px; */
+
+}
+
+#three-dot-menu {
+    position: absolute;
+    left:0px;
+    top:34%;
+    /* margin-right:5px; */
+    padding-left:0;
+    margin-left:0;
+    /* padding-right:10px; */
+/* display:inline-block; */
+    /* display:inline; */
+    /* color:green; */
+    /* padding-bottom:0; */
+    /* padding-top:0; */
+    /* margin-top:0; */
+    /* margin-bottom:0; */
+}
+
+#new-post {
+    position:absolute;
+    right:0;
+    top:34%;
+}
+
+.app-topbar .icon-menu:before {
+    margin-left:0;
+
+}
+
+
+
 
 .app-android .app-page {
     background-color: #7C578C;
