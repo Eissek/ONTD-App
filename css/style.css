@@ -40,6 +40,7 @@
 /* line-height:0; */
     position:absolute;
     left:35%;
+    top:.2em;
 }
 
 .user-avatar {
@@ -53,7 +54,6 @@
     left:1.5em;
     top:10%;
     /* margin-left:7px; */
-
 }
 
 #three-dot-menu {
@@ -63,14 +63,6 @@
     /* margin-right:5px; */
     padding-left:0;
     margin-left:0;
-    /* padding-right:10px; */
-/* display:inline-block; */
-    /* display:inline; */
-    /* color:green; */
-    /* padding-bottom:0; */
-    /* padding-top:0; */
-    /* margin-top:0; */
-    /* margin-bottom:0; */
 }
 
 #new-post {
@@ -84,41 +76,91 @@
 
 }
 
-
-
-
 .app-android .app-page {
     background-color: #7C578C;
+    position:relative;
+    height:100%;
+}
+
+#bottom-bar {
+    height:3.8em;
+    /* height:11%; */
+    background-color:#fff;
+    width:100%;
+    bottom:0;
+    padding:0;
+    margin:0;
+    position:absolute;
+    /* position:relative; */
+    border-top:1px solid black;
+    border-bottom:1px solid black;
+    
+}
+#bottom-bar .user-avatar {
+    Background-color: #fff;
+    border: 1px solid black;
+    left:0.5em;
+    margin-bottom:3em;
+    
+}
+#tag-section {
+    float: right;
+    width:40%;
+    display:inline-block;
+    border-left:1px solid black;
+    /* position:relative; */
+    /* right:0; */
+    Background-color:#fff;
+    height:100%;
+}
+.thisContent {
+    height:80%;
+    background-color: #fff;
+    position:relative;
+    clear:both;
+    padding:1em;
+    text-align:center;
+}
+
+.thisContent h2{
+/* color:red; */
     
 }
 
 .app-content {
-  height:92%;
+    /* height:25%; */
+    /* position:absolute; */
+    /* top:2em; */
     /* background-color: #7C578C; */
 /* margin-bottom:65px; */
+    padding-bottom:0;
+    margin-bottom:0;
    
 }
 .app-section {
-    height:83%;
+    /* height:75%; */
 /* padding-bottom:66px; */
     /* max-height:94%; */
     /* height:28em; */
     /* margin-bottom:1em; */
-    padding:20px;
-
+    /* padding:20px; */
+    /* padding:0; */
+    /* margin:0;     */
 }
 
 .main {
-    /* height:23em; */
-    height:87%;
+    height:23em;
+    /* height:87%; */
     /* min-height:2%; */
     overflow:hidden;
 }
- app-section .main .entry-content {
-    overflow: hidden;
-    color: red;
+ .app-section .main .entry-content {
+    /* overflow: hidden; */
+    /* color: red; */
      /* max-height: 314px; */
-    max-height:50%;
+ /* max-height:50%; */
+     padding:0;
+     margin: 0;
  }
 
  .entry-content * img, img {

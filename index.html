@@ -7,7 +7,7 @@
     <!-- <meta name="viewport" content="inital-scale=1"> -->
     <link rel="stylesheet" href="css/app.min.css">
     <link rel="stylesheet" href="css/style.css">
-  
+    <link rel="stylesheet" href="css/fontello.css">
   </head>
 
   <body class="app-android">
@@ -33,22 +33,26 @@
 	{{#each this}}
 	<div id="ontd-page" class="app-page" data-page="{{id}}" data-next="{{nextId}}" data-prev="{{prevId}}">
 	  <div id="ee" class="app-topbar">
-	    <div class="app-title">
+	    <div id="three-dot-menu" class="icon-menu">
+
+	    </div>
+	    <div class="user-avatar"></div>
+	    <span class="app-title">
 	      ONTD
+	    </span>
+	    <div id="new-post">
+	      <span class="icon-edit-1"></span>
 	    </div>
 	  </div>
-	  <div class="app-content">
-	    <div class="app-section">
-	      <div  class="main">
-		<h2>{{title}}</h2>
-		<div class="entry-content"> {{{content}}}</div>
-		{{poster}}<br>
-		{{date}}<br>
-		{{tags}}<br>
-		Page URL
-	      </div>
-	    </div>
+	  <div class="thisContent">
+	    <h2>{{title}}</h2>
 
+	  </div>
+	  <div id="bottom-bar">
+	    <div class="user-avatar"></div>
+	    <div id="tag-section">
+	    
+	    </div>
 	  </div>
 	</div>
 	{{/each}}
