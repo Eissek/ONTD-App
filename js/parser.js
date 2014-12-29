@@ -20,6 +20,7 @@ ontd.parser = ontd.parser || {};
     var title = "";
     var author = "";
     var date = "";
+    var time = "";
     // var tags = ""; //category
     var content = "";
     var entries = [];
@@ -102,7 +103,9 @@ ontd.parser = ontd.parser || {};
 	    author = entry[i].getElementsByTagName("author")[0].getElementsByTagName("name")[0].firstChild.nodeValue;
 	    tagAttribute = entry[i].getElementsByTagName("category");
 	    content = entry[i].getElementsByTagName("content")[0].firstChild.nodeValue;
-	    date = entry[i].getElementsByTagName("published")[0].firstChild.nodeValue;
+	    var published = entry[i].getElementsByTagName("published")[0].firstChild.nodeValue;
+	    date = ontd.parser.extractDate(published);
+	    time = ontd.parser.extractTime(published);
 	    
 	    var tags = ""; // Tags usually returns an array of tags
 	    for (var j = 0; j<tagAttribute.length;j++) {
@@ -113,7 +116,7 @@ ontd.parser = ontd.parser || {};
 	    // IF IT IS THEN DISREGARD IT
 	    
 	    // Each new entry saved as entry model type and added to the entries array
-	    entries[i] = new ontd.Model.entry(title, author, date, tags, content, id, nextId);
+	    entries[i] = new ontd.Model.entry(title, author, date, tags, content, id, nextId, "",time);
 
 	}
 	ontd.parser.addNextId(entries);
@@ -121,7 +124,7 @@ ontd.parser = ontd.parser || {};
 	for (var i = 0; i < entries.length; i++) {
 	    console.log(entries[i].title + "\n" + entries[i].poster + "\n"
 			+ entries[i].date + "\n"
-			+ entries[i].id
+			+ entries[i].id + "\n" // + entries[i].time
 			/*+ tags.getAttributeNode("term").nodeValue*/);
 	    
 	}
@@ -129,6 +132,16 @@ ontd.parser = ontd.parser || {};
 	
     };
 
+    ontd.parser.extractDate = function (data) {
+	var pattern = /[0-9]{4}-[0-9]{2}-[0-9]{2}/;
+	data = pattern.exec(data);
+	return data;
+    };
+    ontd.parser.extractTime = function (data) {
+	var pattern = /[0-9]{2}:[0-9]{2}/;
+	data = pattern.exec(data);
+	return data;
+    };
     ontd.parser.addNextId = function(data) {
 	var lastEntry = data.length - 1;
 	for (var i = 0; i < data.length; i++) {
