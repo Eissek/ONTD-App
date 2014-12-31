@@ -46,7 +46,9 @@
 	  </div>
 	  <div class="thisContent">
 	    <h2>{{title}}</h2>
-
+	    <div id="previewContent">
+	      {{{contentPreview}}}
+	    </div>
 	  </div>
 	  <div id="bottom-bar">
 	    <div id="posterDiv">
@@ -81,7 +83,6 @@
     <!-- <script src="js/JSXTransfomer.js"></script> -->
     <script src="js/handlebars-v2.0.0.js"></script>
     <script src="js/zepto.js"></script>
-    <!-- <script src="js/mimic.js"></script> -->
     <script src="js/app.min.js"></script>
     <script src="js/init.js"></script>
     <!-- <script type="text/jsx" src="js/components/content.js"></script> -->
@@ -92,6 +93,8 @@
     <!-- <script type="text/jsx" src="js/components/header.js"></script> -->
     <!-- <script type="text/jsx" src="js/views/main.js"></script> -->
     <script src="js/controllers/touch-events.js"></script>
+    <script src="js/controllers/preview.js"></script>
+    <script src="js/textoverflowclamp.js"></script>
     <script src="js/views/home.js"></script>
    
   </body>

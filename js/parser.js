@@ -29,6 +29,11 @@ ontd.parser = ontd.parser || {};
     
     ontd.parser.invokeReadyState = function (callback) {
 
+	// Needed for setting the content preview word limit
+	// if (ontd.controllers.checkWindowHeight()) {
+	//     console.log("Height has been chedcked");
+	// }
+	
 	xhr.onreadystatechange = function () {
 	    console.log("in parser");
 	    if (xhr.readyState == 4){
@@ -76,6 +81,7 @@ ontd.parser = ontd.parser || {};
 	    }
 
 	    ontd.parser.parseEntry(entry);
+	  
 	    var tes = "there are entries shsssssssssss " + entries.length;
 	    if (entries.length > 0)
 		return entries; 
@@ -93,7 +99,7 @@ ontd.parser = ontd.parser || {};
 	// var pattern = /(?:(ohnotheydidnt:))?([0-9]+)$/g;
 	
 	var tagAttribute = ""; // Will hold array of tag attributes
-	
+	var contentPreview = "";
 	for (var i = 0; i < entry.length; i++) {
 	    id = entry[i].getElementsByTagName("id")[0].firstChild.nodeValue;
 	    id = id.split(":").pop(); // Gets last part of id and removes the rest
@@ -103,7 +109,14 @@ ontd.parser = ontd.parser || {};
 	    author = entry[i].getElementsByTagName("author")[0].getElementsByTagName("name")[0].firstChild.nodeValue;
 	    tagAttribute = entry[i].getElementsByTagName("category");
 	    content = entry[i].getElementsByTagName("content")[0].firstChild.nodeValue;
+
+	    if (ontd.controllers.checkWindowHeight)
+		// contentPreview = "<img src=\"http://i.imgur.com/c8X2p2N.jpg\" width=\"450\">";
+		contentPreview = ontd.controllers.previewText(content);
+		
+	    
 	    var published = entry[i].getElementsByTagName("published")[0].firstChild.nodeValue;
+	    
 	    date = ontd.parser.extractDate(published);
 	    time = ontd.parser.extractTime(published);
 	    
@@ -116,7 +129,7 @@ ontd.parser = ontd.parser || {};
 	    // IF IT IS THEN DISREGARD IT
 	    
 	    // Each new entry saved as entry model type and added to the entries array
-	    entries[i] = new ontd.Model.entry(title, author, date, tags, content, id, nextId, "",time);
+	    entries[i] = new ontd.Model.entry(title, author, date, tags, content, id, nextId, "",time, contentPreview);
 
 	}
 	ontd.parser.addNextId(entries);
@@ -159,7 +172,7 @@ ontd.parser = ontd.parser || {};
 	    }
 	}
     };
-    
+    // ontd.parser.hide
     var resolver = function (prefix) {
 	switch(prefix) {
 		case "lj": return "http://www.livejournal.com";

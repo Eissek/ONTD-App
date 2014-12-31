@@ -55,7 +55,14 @@ ontd.controllers = ontd.controllers || {};
 	} else if (elapsedTime <= allowedTime && distance <= upThreshold && Math.abs(touchObj.pageX - startX) <=100) {
 	    console.log("up and next");
 	    // ontd.controllers.nextPage
-	    App.load(document.getElementById("ontd-page").getAttribute("data-next"), 'slide-up');
+	    var next = document.getElementById("ontd-page").getAttribute("data-next");
+	    // clamp(document.getElementById('previewContent'), 6);
+	    App.load(next, 'slide-up', function () {
+		console.log("arrrrrrrrrGGGGH");
+
+		// clamp(document.getElementById('previewContent'), 6);
+	    });
+	    
 	    // ontd.controllers.nextPage(document.getElementById("ontd-page").getAttribute("data-next"));
 	    
 	}

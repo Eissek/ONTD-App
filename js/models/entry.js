@@ -8,8 +8,8 @@ var ontd = ontd || {};
 ontd.Model = ontd.Model || {};
 
 (function () {
-    ontd.Model.entry = function (theTitle, thePoster, theDate, theTags, theContent, theId, theNextID, thePrevID, theTime) {
-	this.title = theTitle;
+    ontd.Model.entry = function (theTitle, thePoster, theDate, theTags, theContent, theId, theNextID, thePrevID, theTime, thePreview) {
+	this.title = theTitle.toUpperCase();
 	this.poster = thePoster;
 	this.date = theDate;
 	this.tags = theTags;
@@ -18,6 +18,7 @@ ontd.Model = ontd.Model || {};
 	this.nextId = theNextID;
 	this.prevId = thePrevID;
 	this.time = theTime;
+	this.contentPreview = thePreview;
 	this.noComments = ""; // number of Comments
 	this.read = false; // Has the post been read before
 	this.observers = []; // Required for observer pattern

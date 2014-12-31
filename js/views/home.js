@@ -19,7 +19,7 @@ ontd.views.home = ontd.views.home || {};
 	App.load("home");
 	// COULD ALSO HAVE A CHECK ARCHIVE FUNCTION AFTER THE LIVE DATA
 	// HAS BEEN RETRIEVED
-
+	
     };
 
 
@@ -30,9 +30,15 @@ ontd.views.home = ontd.views.home || {};
     ontd.views.home.init();
 
 
+    // App.controller('home', function (page) {
+    // 	$(page).on('appShow', function () {
+    // 	    console.log('the user can see it!');
+
+    // 	});
+    // });
     // App.controller("home", function (page) {
     // 	console.log("PAGE LOADEDED");
-
+    	    // clamp(document.getElementById('container'), 6);
 	
     // });
 
