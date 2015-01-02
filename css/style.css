@@ -163,6 +163,8 @@
 .thisContent h2{
 /* color:red; */
     font-family: RobotoBold,MyWebFont,sans-serif;
+    font-size:1.3em;
+    max-height:30%;
 }
 .thisContent #previewContent {
     font-size:0.7em;
@@ -174,6 +176,10 @@
     /* white-space: nowrap; */
     /* text-overflow:ellipsis; */
     padding-bottom:1em;
+}
+.thisContent #previewContent img {
+    max-width:90%;
+    max-height:65%;
 }
 
 .app-content {
@@ -214,6 +220,7 @@
 
  .entry-content * img, img {
      max-width:90%;
+     /* max-height:60%; */
      height: auto;
  }
  
