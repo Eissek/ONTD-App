@@ -50,7 +50,10 @@ ontd.controllers = ontd.controllers || {};
 	    var domRef = document.getElementById("ontd-page").getAttribute("data-prev");
 
 	    if (domRef)
-		App.load(domRef, 'slide-down');
+		App.load(domRef, 'slide-down', function () {
+		    var content = document.getElementById("previewContent");
+		    twttr.widgets.load(content);
+		});
 		
 	} else if (elapsedTime <= allowedTime && distance <= upThreshold && Math.abs(touchObj.pageX - startX) <=100) {
 	    console.log("up and next");
@@ -58,8 +61,8 @@ ontd.controllers = ontd.controllers || {};
 	    var next = document.getElementById("ontd-page").getAttribute("data-next");
 	    // clamp(document.getElementById('previewContent'), 6);
 	    App.load(next, 'slide-up', function () {
-		console.log("arrrrrrrrrGGGGH");
-
+		var content = document.getElementById("previewContent");
+		twttr.widgets.load(content);
 		// clamp(document.getElementById('previewContent'), 6);
 	    });
 	    
